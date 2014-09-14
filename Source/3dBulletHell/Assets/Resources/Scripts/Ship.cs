@@ -15,16 +15,28 @@ public class Ship : MonoBehaviour {
 	//Have you hit the edge of the room?
 	public bool hit_edge;
 
+
+	/// Weapons
+	public GameObject default_bullet;
+	private float default_wep_delay;
+	private float default_wep_timer;
+
 	// Use this for initialization
 	void Start () {
 		movement_speed = 5;
 		room_size = 10;
 		room_size_square = room_size * room_size;
 		hit_edge = false;
+
+		///Weapons
+		default_wep_delay = .2f;
+		default_wep_timer = 0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+	///General Movement
 		h_speed = 0;
 		v_speed = 0;
 		x_pos = transform.position.x;
@@ -81,5 +93,16 @@ public class Ship : MonoBehaviour {
 		//Actually Move
 		transform.Translate(Vector3.forward * v_speed);
 		transform.Translate(Vector3.right * h_speed);
+
+	///Firing Weapons
+		if(default_wep_timer > 0){
+			default_wep_timer -= Time.deltaTime;
+		}
+		if(Input.GetButton("Fire_Default") || Input.GetMouseButton(0)){
+			if(default_wep_timer <= 0){
+				default_wep_timer = default_wep_delay;
+				GameObject bullet = Instantiate(default_bullet, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity) as GameObject;
+			}
+		}
 	}
 }
