@@ -12,7 +12,7 @@ public class Ship : MonoBehaviour {
 	//The distance the ship can travel from origin
 	public int room_size;
 	private int room_size_square;
-	//Have you hit the edge of the room? -1=yes 1=no
+	//Have you hit the edge of the room?
 	public bool hit_edge;
 
 	// Use this for initialization
@@ -29,50 +29,46 @@ public class Ship : MonoBehaviour {
 		v_speed = 0;
 		x_pos = transform.position.x;
 		z_pos = transform.position.z;
+
+		//Checks if you hit the room edge (a^2 + b^2 = c^2)
 		if((x_pos * x_pos) + (z_pos * z_pos) >= room_size_square){
 			hit_edge = true;
 		}
 		else{
 			hit_edge = false;
 		}
+
+		//Gets movement speed by checking input
 		if(Input.GetButton("Vertical")){
 			v_speed = movement_speed * Input.GetAxis("Vertical") * Time.deltaTime;
-			/*if(transform.position.z > 10){
-				transform.position = new Vector3(transform.position.x, 0, 10);
-			}
-			else if(transform.position.z < -10){
-				transform.position = new Vector3(transform.position.x, 0, -10);
-			}*/
 		}
 
 		if(Input.GetButton("Horizontal")){
 			h_speed = movement_speed * Input.GetAxis("Horizontal") * Time.deltaTime;
-
-			/*if(transform.position.x > 10){
-				transform.position = new Vector3(10, 0, transform.position.z);
-			}
-			else if(transform.position.x < -10){
-				transform.position = new Vector3(-10, 0, transform.position.z);
-			}*/
 		}
 
+		//If at an edge, make sure you don't go past it
 		if(hit_edge){
 			float abs_x = Mathf.Abs(x_pos);
 			float abs_z = Mathf.Abs(z_pos);
+			///Checking on which values to invert
+			//Only invert h_speed if it isn't 0. Favor inverting the larger position (whether x or z is higher),
+			//but make sure it check H-speed if v_speed = 0
 			if(h_speed != 0 && (abs_x > abs_z || v_speed == 0)){
-				Debug.Log ("1");
+				//If you have a negative speed and are at the negative edge of the room, invert
+				//If you have a positive speed and are at the positive edge of the room, invert
 				if((h_speed < 0 && x_pos < 0) || (h_speed > 0 && x_pos > 0)){
 					h_speed *= -1;
 				}
 			}
+			//Same as h_speed invertion
 			else if(v_speed != 0 && (abs_x < abs_z || h_speed == 0)){
-				Debug.Log ("2");
 				if((v_speed < 0 && z_pos < 0) || (v_speed > 0 && z_pos > 0)){
 					v_speed *= -1;
 				}
 			}
 			else{
-				Debug.Log ("3");
+				//Same as the insides of the other if statements
 				if((h_speed < 0 && x_pos < 0) || (h_speed > 0 && x_pos > 0)){
 					h_speed *= -1;
 				}
@@ -81,7 +77,8 @@ public class Ship : MonoBehaviour {
 				}
 			}
 		}
-		//Debug.Log("h: " + h_speed + " v: " + v_speed);
+
+		//Actually Move
 		transform.Translate(Vector3.forward * v_speed);
 		transform.Translate(Vector3.right * h_speed);
 	}
