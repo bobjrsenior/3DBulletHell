@@ -29,7 +29,7 @@ public class Ship : MonoBehaviour {
 		v_speed = 0;
 		x_pos = transform.position.x;
 		z_pos = transform.position.z;
-		if((transform.position.x * transform.position.x) + (transform.position.z * transform.position.z) >= room_size_square){
+		if((x_pos * x_pos) + (z_pos * z_pos) >= room_size_square){
 			hit_edge = true;
 		}
 		else{
@@ -57,19 +57,22 @@ public class Ship : MonoBehaviour {
 		}
 
 		if(hit_edge){
-			float abs_x = Mathf.Abs(transform.position.x);
-			float abs_z = Mathf.Abs(transform.position.z);
-			if(abs_x > abs_z){
+			float abs_x = Mathf.Abs(x_pos);
+			float abs_z = Mathf.Abs(z_pos);
+			if(h_speed != 0 && (abs_x > abs_z || v_speed == 0)){
+				Debug.Log ("1");
 				if((h_speed < 0 && x_pos < 0) || (h_speed > 0 && x_pos > 0)){
 					h_speed *= -1;
 				}
 			}
-			else if(abs_x < abs_z){
+			else if(v_speed != 0 && (abs_x < abs_z || h_speed == 0)){
+				Debug.Log ("2");
 				if((v_speed < 0 && z_pos < 0) || (v_speed > 0 && z_pos > 0)){
 					v_speed *= -1;
 				}
 			}
 			else{
+				Debug.Log ("3");
 				if((h_speed < 0 && x_pos < 0) || (h_speed > 0 && x_pos > 0)){
 					h_speed *= -1;
 				}
@@ -78,6 +81,7 @@ public class Ship : MonoBehaviour {
 				}
 			}
 		}
+		//Debug.Log("h: " + h_speed + " v: " + v_speed);
 		transform.Translate(Vector3.forward * v_speed);
 		transform.Translate(Vector3.right * h_speed);
 	}
