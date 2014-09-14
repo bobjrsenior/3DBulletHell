@@ -102,6 +102,7 @@ public class Ship : MonoBehaviour {
 			if(default_wep_timer <= 0){
 				default_wep_timer = default_wep_delay;
 				GameObject bullet = Instantiate(default_bullet, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity) as GameObject;
+				((Bullet) bullet.GetComponent(typeof(Bullet))).set_speed(15);
 			}
 		}
 	}
