@@ -17,7 +17,9 @@ public class Ship : MonoBehaviour {
 
 
 	/// Weapons
+	//Bullet Object (Public so that you can just drag the bullet_prefab onto it instead coding it in)
 	public GameObject default_bullet;
+	//Delay = min time between shots | timer = tracks time between shots
 	private float default_wep_delay;
 	private float default_wep_timer;
 
@@ -95,13 +97,17 @@ public class Ship : MonoBehaviour {
 		transform.Translate(Vector3.right * h_speed);
 
 	///Firing Weapons
+		//if 0, then can fire. Keep it going down even if you are not pressing fire
 		if(default_wep_timer > 0){
 			default_wep_timer -= Time.deltaTime;
 		}
+		//If press Spacebar/Leftclick
 		if(Input.GetButton("Fire_Default") || Input.GetMouseButton(0)){
 			if(default_wep_timer <= 0){
 				default_wep_timer = default_wep_delay;
+				//Instantiate(Create) a bullet 1 unit above you
 				GameObject bullet = Instantiate(default_bullet, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity) as GameObject;
+				//Set the bullets speed to 15
 				((Bullet) bullet.GetComponent(typeof(Bullet))).set_speed(15);
 			}
 		}
