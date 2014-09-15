@@ -4,7 +4,8 @@ using System.Collections;
 public class Bullet : MonoBehaviour {
 
 	private float movement_speed;
-	private float life; 
+	private float life;
+	private float damage;
 
 	// Use this for initialization
 	public void Start () {
@@ -15,12 +16,20 @@ public class Bullet : MonoBehaviour {
 		if(life == 0){
 			life = 5f;
 		}
+		if(damage == 0){
+			damage = 1;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//Move Up
 		transform.Translate(Vector3.up * movement_speed * Time.deltaTime);
+
+		life -= Time.deltaTime;
+		if(life <= 0){
+			Destroy(this.gameObject);
+		}
 	}
 
 	//Set the Bullet's speed
@@ -30,5 +39,12 @@ public class Bullet : MonoBehaviour {
 
 	public void set_life(float seconds){
 		life = seconds;
+	}
+
+	void OnTriggerEnter(Collider other) {
+		if(other.CompareTag("Enemy")){
+			((Enemy) other.GetComponent(typeof(Enemy))).take_damage(damage);
+			Destroy (this.gameObject);
+		}
 	}
 }
