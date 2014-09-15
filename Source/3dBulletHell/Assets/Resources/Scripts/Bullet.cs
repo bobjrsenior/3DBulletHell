@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour {
 	private float life;
 	private float damage;
 
+	public ParticleSystem particles;
+
 	// Use this for initialization
 	public void Start () {
 		//If speed has not been set, make it 10
@@ -44,6 +46,7 @@ public class Bullet : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if(other.CompareTag("Enemy")){
 			((Enemy) other.GetComponent(typeof(Enemy))).take_damage(damage);
+			Instantiate(particles, transform.position, Quaternion.identity);
 			Destroy (this.gameObject);
 		}
 	}
