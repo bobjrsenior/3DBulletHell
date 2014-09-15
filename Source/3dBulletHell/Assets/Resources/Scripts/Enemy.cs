@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour {
 	private float health;
 	private float movement_speed;
 
+	public ParticleSystem particles;
+
 	// Use this for initialization
 	void Start () {
 		health = 10f;
@@ -21,6 +23,7 @@ public class Enemy : MonoBehaviour {
 		Debug.Log ("hit2");
 		health -= damage;
 		if(health <= 0){
+			Instantiate(particles, transform.position, Quaternion.identity);
 			Destroy(this.gameObject);
 		}
 	}
