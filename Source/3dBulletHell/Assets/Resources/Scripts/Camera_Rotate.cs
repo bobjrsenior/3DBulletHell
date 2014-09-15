@@ -7,7 +7,7 @@ public class Camera_Rotate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rotate_speed = 10f;
+		rotate_speed = 30f;
 	}
 	
 	// Update is called once per frame
