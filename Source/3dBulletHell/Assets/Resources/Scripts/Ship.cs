@@ -4,6 +4,8 @@ using System.Collections;
 public class Ship : MonoBehaviour {
 
 
+	private float health;
+
 	private float movement_speed;
 	private float h_speed;
 	private float v_speed;
@@ -25,6 +27,8 @@ public class Ship : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		health = 100f;
+
 		movement_speed = 5;
 		room_size = 10;
 		room_size_square = room_size * room_size;
@@ -110,6 +114,13 @@ public class Ship : MonoBehaviour {
 				//Set the bullets speed to 15
 				((Bullet) bullet.GetComponent(typeof(Bullet))).set_speed(15);
 			}
+		}
+	}
+
+	public void take_damage(float damage){
+		health -= damage;
+		if(health <= 0){
+			Destroy(this.gameObject);
 		}
 	}
 }
