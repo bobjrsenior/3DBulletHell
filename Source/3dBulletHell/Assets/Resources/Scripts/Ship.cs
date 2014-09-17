@@ -4,7 +4,8 @@ using System.Collections;
 public class Ship : MonoBehaviour {
 
 
-	private float health;
+	private void max_health;
+	private float cur_health;
 
 	private float movement_speed;
 	private float h_speed;
@@ -27,7 +28,8 @@ public class Ship : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		health = 100f;
+		max_health = 100f;
+		cur_health = max_health;
 
 		movement_speed = 5;
 		room_size = 10;
@@ -118,8 +120,8 @@ public class Ship : MonoBehaviour {
 	}
 
 	public void take_damage(float damage){
-		health -= damage;
-		if(health <= 0){
+		cur_health -= damage;
+		if(cur_health <= 0){
 			Destroy(this.gameObject);
 		}
 	}
