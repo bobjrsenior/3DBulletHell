@@ -3,14 +3,21 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
-	private float health;
+	private float max_health;
+	private float cur_health;
+	private float health_percent;
+
 	private float movement_speed;
 
 	public ParticleSystem particles;
+	public GameObject health_Bar;
 
 	// Use this for initialization
 	void Start () {
-		health = 10f;
+		max_health = 10f;
+		cur_health = max_health;
+		health_percent = .5f * (cur_health / max_health);
+		health_Bar.transform.localScale	= new Vector3(health_percent, health_percent, health_percent);
 		movement_speed = 15f;
 	}
 	
@@ -21,8 +28,10 @@ public class Enemy : MonoBehaviour {
 
 	public void take_damage(float damage){
 		Debug.Log ("hit2");
-		health -= damage;
-		if(health <= 0){
+		cur_health -= damage;
+		health_percent = .5f * (cur_health / max_health);
+		health_Bar.transform.localScale	= new Vector3(health_percent, health_percent, health_percent);
+		if(cur_health <= 0){
 			Instantiate(particles, transform.position, Quaternion.identity);
 			Destroy(this.gameObject);
 		}
