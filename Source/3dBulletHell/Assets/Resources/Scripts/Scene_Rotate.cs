@@ -6,7 +6,7 @@ public class Scene_Rotate : MonoBehaviour {
 	private GameObject Ship;
 
 	private float rotate_speed;
-	private float rotation_amount;
+	private Vector3 rotation_amount;
 
 	// Use this for initialization
 	void Start () {
@@ -16,8 +16,8 @@ public class Scene_Rotate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		rotation_amount = rotate_speed * Input.GetAxis("Mouse X") * Time.deltaTime;
-		transform.Rotate(Vector3.up * rotation_amount);
-		Ship.transform.Rotate(Vector3.up * rotation_amount);
+		rotation_amount = Vector3.up * rotate_speed * Input.GetAxis("Mouse X") * Time.deltaTime;
+		transform.Rotate(rotation_amount);
+		Ship.transform.Rotate(rotation_amount);
 	}
 }
