@@ -4,7 +4,7 @@ using System.Collections;
 public class Ship : MonoBehaviour {
 
 
-	private void max_health;
+	private float max_health;
 	private float cur_health;
 
 	private float movement_speed;
