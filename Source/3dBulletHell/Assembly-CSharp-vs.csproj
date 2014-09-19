@@ -50,7 +50,10 @@
      <Compile Include="Assets\Resources\Scripts\Enemy.cs" />
      <Compile Include="Assets\Resources\Scripts\Scene_Rotate.cs" />
      <Compile Include="Assets\Resources\Scripts\Ship.cs" />
+     <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
+     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>C:/Users/Ryan/Documents/GitHub/3DBulletHell/Source/3dBulletHell/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
