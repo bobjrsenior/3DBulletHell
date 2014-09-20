@@ -100,7 +100,7 @@ public class Ship : MonoBehaviour {
 
 		//Actually Move
 		transform.Translate(Vector3.forward * v_speed);
-		transform.Translate(Vector3.right * h_speed);
+		transform.Translate(Vector3.left * h_speed);
 
 	///Firing Weapons
 		//if 0, then can fire. Keep it going down even if you are not pressing fire
