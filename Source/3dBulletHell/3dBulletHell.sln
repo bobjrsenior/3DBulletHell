@@ -1,7 +1,9 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{b955b5aa-9c1c-4cd6-9a10-9e34431be3eb}") = "Assembly-UnityScript-firstpass", "Assembly-UnityScript-firstpass.unityproj", "{6589DBBD-1CD7-49FB-C224-F1514C41F937}"
+# Visual Studio 2008
+
+Project("{4CB60429-5E83-AFF4-2357-A3AE4C485870}") = "3dBulletHell", "Assembly-CSharp.csproj", "{F370FC6D-D955-5A53-86C8-6522A37CBF17}"
+EndProject
+Project("{4CB60429-5E83-AFF4-2357-A3AE4C485870}") = "3dBulletHell", "Assembly-UnityScript-firstpass.unityproj", "{6589DBBD-1CD7-49FB-C224-F1514C41F937}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +11,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F370FC6D-D955-5A53-86C8-6522A37CBF17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F370FC6D-D955-5A53-86C8-6522A37CBF17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F370FC6D-D955-5A53-86C8-6522A37CBF17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F370FC6D-D955-5A53-86C8-6522A37CBF17}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6589DBBD-1CD7-49FB-C224-F1514C41F937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6589DBBD-1CD7-49FB-C224-F1514C41F937}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6589DBBD-1CD7-49FB-C224-F1514C41F937}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6589DBBD-1CD7-49FB-C224-F1514C41F937}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+		GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-UnityScript-firstpass.unityproj
 		Policies = $0
 		$0.TextStylePolicy = $1
@@ -32,7 +41,5 @@ Global
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
+
 EndGlobal
