@@ -27,7 +27,6 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void take_damage(float damage){
-		Debug.Log ("hit2");
 		cur_health -= damage;
 		health_percent = .5f * (cur_health / max_health);
 		health_Bar.transform.localScale	= new Vector3(health_percent, health_percent, health_percent);
