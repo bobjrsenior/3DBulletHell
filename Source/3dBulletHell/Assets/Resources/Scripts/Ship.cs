@@ -64,7 +64,7 @@ public class Ship : MonoBehaviour {
 		}
 
 		if(Input.GetButton("Horizontal")){
-			h_speed = movement_speed * Input.GetAxis("Horizontal") * Time.deltaTime;
+			h_speed = -movement_speed * Input.GetAxis("Horizontal") * Time.deltaTime;
 		}
 
 		//If at an edge, make sure you don't go past it
@@ -100,7 +100,7 @@ public class Ship : MonoBehaviour {
 
 		//Actually Move
 		transform.Translate(Vector3.forward * v_speed);
-		transform.Translate(Vector3.left * h_speed);
+		transform.Translate(Vector3.right * h_speed);
 
 	///Firing Weapons
 		//if 0, then can fire. Keep it going down even if you are not pressing fire
