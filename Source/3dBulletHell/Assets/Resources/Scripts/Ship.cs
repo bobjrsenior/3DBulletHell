@@ -60,7 +60,7 @@ public class Ship : MonoBehaviour {
 
 		//Gets movement speed by checking input
 		if(Input.GetButton("Vertical")){
-			v_speed = movement_speed * Input.GetAxis("Vertical") * Time.deltaTime;
+			v_speed = -movement_speed * Input.GetAxis("Vertical") * Time.deltaTime;
 		}
 
 		if(Input.GetButton("Horizontal")){
@@ -99,7 +99,7 @@ public class Ship : MonoBehaviour {
 		}
 
 		//Actually Move
-		transform.Translate(Vector3.forward * v_speed);
+		transform.Translate(Vector3.up * v_speed);
 		transform.Translate(Vector3.right * h_speed);
 
 	///Firing Weapons
